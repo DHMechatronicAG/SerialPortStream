@@ -12,6 +12,8 @@
     <PackageId>netstandard</PackageId>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net46</PackageTargetFallback>
     <Configurations>Debug;Release;Signed_Release</Configurations>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>SerialPortStream.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Signed_Release|AnyCPU' ">
