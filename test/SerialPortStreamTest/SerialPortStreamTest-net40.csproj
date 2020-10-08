@@ -64,11 +64,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.2.7.1\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
@@ -77,11 +77,16 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MsdnFrameworkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="ReadToTest.cs" />
+    <None Include="packages.SerialPortStreamTest-net40.config" />
     <Compile Include="SerialConfiguration.cs" />
-    <Compile Include="SerialPortStreamTest.cs" />
+    <Compile Include="SerialPortStreamManualTest.cs" />
+    <Compile Include="SerialPortStreamParityTest.cs" />
+    <Compile Include="SerialPortStreamCharTest.cs" />
+    <Compile Include="SerialPortStreamSimpleTest.cs" />
+    <Compile Include="SerialPortStreamRxTxTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\code\SerialPortStream-net40.csproj">
@@ -97,7 +102,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.SerialPortStreamTest-net40.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

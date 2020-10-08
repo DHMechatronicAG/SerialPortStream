@@ -22,7 +22,6 @@ namespace RJCP.IO.Ports.Native
     /// <summary>
     /// Windows implementation for a Native Serial connection.
     /// </summary>
-    /// <seealso cref="RJCP.IO.Ports.Native.INativeSerial" />
     internal class WinNativeSerial : INativeSerial
     {
         private SafeFileHandle m_ComPortHandle;
@@ -640,7 +639,8 @@ namespace RJCP.IO.Ports.Native
             get
             {
                 if (m_IsDisposed) return false;
-                return m_ComPortHandle != null && !m_ComPortHandle.IsClosed && !m_ComPortHandle.IsInvalid;
+                SafeFileHandle handle = m_ComPortHandle;
+                return handle != null && !handle.IsClosed && !handle.IsInvalid;
             }
         }
 
@@ -888,12 +888,13 @@ namespace RJCP.IO.Ports.Native
         {
             if (m_IsDisposed) throw new ObjectDisposedException("WinNativeSerial");
             if (IsOpen) {
+                SafeFileHandle handle = m_ComPortHandle;
+                m_ComPortHandle = null;
                 m_CommOverlappedIo.Dispose();
                 m_CommOverlappedIo = null;
                 m_CommState = null;
                 m_CommModemStatus = null;
-                m_ComPortHandle.Dispose();
-                m_ComPortHandle = null;
+                handle.Dispose();
             }
     }
 
